@@ -77,4 +77,19 @@ Insert (value) {
 }
 ```
 
+Was correct. Indeed here is my implementation : 
+
+Uncaught SyntaxError: Unexpected token '...'
+> function insert(value, heap) {
+...  heap.push(value); let index = heap.length - 1;
+...  while ( index > 0 && heap[Math.floor((index-1) /2)] > heap[index]) {
+...  let temp = heap[index]; heap[index] = heap[Math.floor((index-1) / 2)]; 
+...  heap[Math.floor((index-1)/2)] = temp;
+...  index = Math.floor((index-1)/2);}
+...  }
+
 Remaining insert. peek. remove.
+
+Remove logic , You don't "remove" rather you remove the parent node.
+Then you need hepify logic to re arrange the whole array to be correct.
+GOAL LEARN HEAPIFY.
