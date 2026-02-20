@@ -1,31 +1,42 @@
-/*
-  * Creating a min heap implementation by hand to understand heaps properly
-  */
+/************* KEEP BELOW CODE AS IT IS *********************/
+/**
+ * This code has been taken from: https://codeforces.com/blog/entry/69610
+ * I am not the owner of the readLine function below, understanding them require knowledge of basic NodeJS I/O and streams
+ */
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
 
-class MinHeap {
-  
-  // Creates the heap
-  constructor() {
-    this.heap = [];
-  }
+let inputString = '';
+let currentLine = 0;
 
-  // ==== Core operations ====
-  // Insert , Extract Min , peek , heaipfy
+process.stdin.on('data', inputStdin => {
+    inputString += inputStdin;
+});
 
-  insert(value) {
-    //TODO: Add insertion logic
-    }
+process.stdin.on('end', _ => {
+    inputString = inputString.trim().split('\n').map(string => {
+        return string.trim();
+    });
+    
+    main();    
+});
+
+function readLine() {
+    return inputString[currentLine++];
 }
 
-// Write an example to test the MinHeap class, Have a heap with some values , 
-// show the heap after insertion and how it should be after insertion 
-
-const minHeap = new MinHeap();
-minHeap.insert(10);
-minHeap.insert(5);
-minHeap.insert(20);
-minHeap.insert(3);
-minHeap.insert(8);
-
-console.log(minHeap.heap); // Output should be a valid min-heap: [3, 5, 20, 10, 8]
-console.log("Output should be a valid min-heap: [3, 5, 20, 10, 8]");
+function main() {
+	
+	let n = Number(readLine());
+	let output = n + " ";
+	while (n !== 1) {
+	if (n % 2 === 0) n /= 2;
+	else { 
+		n *= 3;
+		n += 1; 
+	}
+	output += n + " ";
+}
+	output = output.trim();
+	console.log(output);
+}
