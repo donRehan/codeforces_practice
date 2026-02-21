@@ -25,18 +25,62 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-function main() {
+const cin = () => readLine();
+const cout = (s = "") => process.stdout.write(String(s));
+
+/* Default approach
+ * function main() {
+	const n = Number(cin());
+	const vis = new Array(n + 1).fill(false); 
+	const arr = cin().split(" ").map(Number);
 	
-	let n = Number(readLine());
-	let output = n + " ";
-	while (n !== 1) {
-	if (n % 2 === 0) n /= 2;
-	else { 
-		n *= 3;
-		n += 1; 
+	for (const x of arr) {
+		vis[x] = true;
 	}
-	output += n + " ";
+	
+	for ( let i = 1; i <= n; i++ ) {
+		if (!vis[i]) {
+			cout(i + "\n");
+			return;
+		}
+	}
 }
-	output = output.trim();
-	console.log(output);
+ */ 
+ 
+ /*
+  * 
+  * // Summation approach
+function main() {
+	const n = Number(cin());
+	
+	// expected sum of 1..n
+	const expected = (n * (n + 1)) / 2;
+	const sum = cin()
+				.split(" ")
+				.map(Number)
+				.reduce((a,b) => a + b, 0);
+	// instead of reduce let total = 0;for ( const x of sum ) total += x;
+	const missing = expected - sum;
+	cout(missing + "\n");
+}
+  * 
+  * 
+  */ 
+
+// xor approach
+function main() {
+	const n = Number(cin());
+	let x = 0;
+	
+	// XOR all numbers from 1..n
+	for (let i = 1; i <= n; i++) {
+		x ^= i;
+	}
+	// XOR the input numbers
+	const arr = cin().split(" ").map(Number);
+	for ( const v of arr ) {
+		x ^= v;
+	}
+	
+	cout(x + "\n");
 }
